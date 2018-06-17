@@ -14,8 +14,8 @@ public class Prop <T> {
     private String s=null;
 
     public void getFile () {
-        try {
-            properties.load(new FileReader(file));
+        try (FileReader fileReader = new FileReader(file)) {
+            properties.load(fileReader);
             n = properties.size();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
